@@ -1,3 +1,31 @@
 .image-adjust{
   object-fit : cover;
+  object-position: 0 50%x ;
+  max-height: 500px;
+}
+
+.fonte-pacifico{
+  font-family: 'Pacifico', cursive;
+}
+
+.special-color{
+  color:darkred !important;
+}
+
+.border-special-color{
+  border-color:darkred;
+}
+
+.btn-special-color{
+  background-color:darkred;
+  color: white;
+}
+
+.news img{
+  object-fit : cover;
+  height: 200px;
+}
+
+article.card{
+  max-width: 20rem;
 }

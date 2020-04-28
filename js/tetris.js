@@ -1,11 +1,18 @@
 const canvas = document.getElementById("tetris");
 const ctxt = canvas.getContext("2d");
+const scoreElement = document.getElementById("score");
 const rows = 20;
 const columns = 10;
 const vacant = "white";
 const squareSize = 20;
-const scoreElement = document.getElementById("score");
 let score = 0;
+
+function drawSquare(x, y, color){
+    ctxt.fillStyle = color
+    ctxt.fillRect(x*squareSize, y*squareSize, squareSize, squareSize);
+    ctxt.strokeStyle = "black";
+    ctxt.strokeRect(x*squareSize, y*squareSize, squareSize, squareSize);
+}
 
 //create board
 let board = [];
@@ -24,13 +31,6 @@ function drawBoard(){
     }
 }
 drawBoard();
-
-function drawSquare(x, y, color){
-    ctxt.fillStyle = color
-    ctxt.fillRect(x*squareSize, y*squareSize, squareSize, squareSize);
-    ctxt.strokeStyle = "black";
-    ctxt.strokeRect(x*squareSize, y*squareSize, squareSize, squareSize);
-}
 
 //All pieces
 const PIECES = [
@@ -71,7 +71,7 @@ function Piece(tetromino, color){
     this.tetrominoN = 0;
     this.activeTetromino = this.tetromino[this.tetrominoN];
     this.x = 3;
-    this.y = 0;
+    this.y = -2;
 }
 
 Piece.prototype.fill = function(color){
@@ -228,7 +228,7 @@ let gameOver = false;
 function drop() {
     let now = Date.now();
     let delta = now - dropStart;
-    if(delta>=500){
+    if(delta > 500){
         p.moveDown();
         dropStart = Date.now();
     }
